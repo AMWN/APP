@@ -1,0 +1,28 @@
+<section data-ng-controller="ProjectsController" data-ng-init="find()">
+    <div class="page-header">
+        <div class="pull-right">
+            <a class="btn btn-primary" data-ng-click="sync()">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+        </div>
+        <h1>Projects ({{projects.length}})</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="list-group-item">
+            <small class="list-group-item-text">
+                Projectnummer
+                <span data-ng-bind="project.project"></span>
+                Omschrijving
+                <span data-ng-bind="project.omschrijving"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="project.project"></h4>
+            <p class="list-group-item-text" data-ng-bind="project.omschrijving"></p>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-if="projects.$resolved && !projects.length">
+        No projects yet, why don't you <a href="/#!/projects/create">create one</a>?
+    </div>
+    <div data-ng-show="error" class="text-danger">
+        <strong data-ng-bind="error"></strong>
+    </div>
+</section>

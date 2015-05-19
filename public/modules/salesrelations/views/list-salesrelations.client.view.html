@@ -1,0 +1,27 @@
+<section data-ng-controller="SalesrelationsController" data-ng-init="find()">
+    <div class="page-header">
+        <div class="pull-right">
+            <a class="btn btn-primary" data-ng-click="sync()">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+        </div>
+        <h1>Salesrelations</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="salesrelation in salesrelations" data-ng-href="#!/salesrelations/{{salesrelation._id}}" class="list-group-item">
+            <small class="list-group-item-text">
+                Created on
+                <span data-ng-bind="salesrelation.created | date:'medium'"></span>
+                Naam
+                <span data-ng-bind="salesrelation.naam"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="salesrelation.naam"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!salesrelations.$resolved || salesrelations.length">
+        No Salesrelations yet, why don't you <a href="/#!/salesrelations/create">create one</a>?
+    </div>
+    <div data-ng-show="error" class="text-danger">
+        <strong data-ng-bind="error"></strong>
+    </div>
+</section>

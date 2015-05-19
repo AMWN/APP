@@ -1,0 +1,10 @@
+<div class="form-group" ng-class="{ 'has-error' : submitted && projectForm.field.label.$invalid}">
+    <label class="control-label" for="omschrijving">field.label</label>
+    <div class="controls">
+        <input name="field.name" type="text" data-ng-model="field.field" id="omschrijving" class="form-control" placeholder="field.label" required>
+    </div>
+    <div ng-show="submitted && projectForm.{{field.name}}.$invalid" class="help-block">
+        <p ng-show="projectForm.{{field.name}}.$error.required" class="text-danger">Omschrijving is required</p>
+    </div>
+</div>
+

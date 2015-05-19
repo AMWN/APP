@@ -1,0 +1,14 @@
+
+<section class="row" data-ng-controller="AuthenticationController" data-ng-init="signinProfit()">
+    
+    <h3 class="col-md-12 text-center">ProfitAutorize</h3>
+    <div>
+        <div data-ng-show="error" class="text-center text-danger">
+            <strong data-ng-bind="error"></strong>
+        </div>
+        <div data-ng-show="authentication.user" class="text-center text-danger">
+            <strong>succes!</strong>
+            <pre>{{authentication.user | json}}</pre>
+        </div>
+    </div>
+</section>

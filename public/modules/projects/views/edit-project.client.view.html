@@ -1,0 +1,32 @@
+<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Edit Project</h1>
+    </div>
+    <div class="col-md-12">
+        <form name="projectForm" class="form-horizontal" data-ng-submit="update(projectForm.$valid)" novalidate>
+            <fieldset>
+
+                <div class="form-group" ng-if="field.edit" ng-form="fieldForm" data-ng-repeat="field in model| orderBy: 'seno'" ng-class="{ 'has-error' : fieldForm.field.$invalid}">
+                    <label class="control-label" for="{{field.label}}">{{field.label}}</label>
+                    <div class="controls" data-ng-switch="field.type"> 
+                        <input  data-ng-required="field.required" data-ng-switch-default name="field" type="text" data-ng-model="project[field.field]" id="{{field.label}}" class="form-control" placeholder="{{field.label}}" >
+                        <input  data-ng-required="field.required" data-ng-switch-when="String" name="field" type="text" data-ng-model="project[field.field]" id="{{field.label}}" class="form-control" placeholder="{{field.label}}" >
+                        <input  data-ng-switch-when="Date" name="field" type="date" data-ng-model="project[field.field]" id="{{field.label}}" class="form-control" placeholder="{{field.label}}" >
+                        <input  data-ng-switch-when="Ref" name="field" type="text" data-ng-model="project[field.field][field.key]" id="{{field.label}}" class="form-control" placeholder="{{field.label}}" >
+                    </div>
+                    <div ng-show="fieldForm.field.$invalid" class="help-block">
+                        <p ng-show="fieldForm.field.$error.required" class="text-danger">{{field.label}} is required</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" ng-disabled="projectForm.$invalid" class="btn btn-default">
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    
+    <pre>{{project| json}}</pre>
+</section>

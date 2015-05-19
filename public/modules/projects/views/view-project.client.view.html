@@ -1,0 +1,33 @@
+<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1 data-ng-bind="project.omschrijving"></h1>
+    </div>
+    <div class="row">
+        <div class="pull-right" >
+            <a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-primary" data-ng-click="remove();">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
+    </div>
+    <div ng-repeat="field in model_project| orderBy: 'seno' ">
+        <project-field></project-field>
+        <project-test></project-test>
+
+    </div>
+    <div>{{project.administratie}}</div>
+
+
+    <ul class="list-group">
+        <h3 style="padding-left: 15px;">Signature</h3>
+        <li class="list-group-item">
+            <canvas saveVal="{{ saveVal}}" value="{{ clearVal}}" style="border: 1px solid black;" id="canvas1" width="200" height="200" signature-dir></canvas>
+            <button class="btn btn-warning" ng-click="clear()">Clear</button>
+            <button class="btn btn-primary" ng-click="ok()">Save</button>
+        </li>
+    </ul>
+
+
+</section>
