@@ -45,7 +45,7 @@ exports.getconnector = function(options, callback) {
         console.log(Date.now() + ' Connector: connecting AOL');
 
         client.GetDataWithOptions({
-            token: '<token><version>1</version><data>E8141F81A8974622B3A4B390B0C7750FB3BB5515420D162339E973B521C24741</data></token>',
+            token: '<token><version>1</version><data>46839A6FC04B48F3A56C1BF4A1EDB90FC413C0B14EC1AB9D57516FB728361CE1</data></token>',
             connectorId: connectorId,
             filterXml: '',
             skip: 0,
@@ -109,7 +109,7 @@ exports.updateconnector = function(options, callback) {
         console.log(Date.now() + ' Connector: connecting AOL');
 
         client.Execute({
-            token: '<token><version>1</version><data>E8141F81A8974622B3A4B390B0C7750FB3BB5515420D162339E973B521C24741</data></token>',
+            token: '<token><version>1</version><data>46839A6FC04B48F3A56C1BF4A1EDB90FC413C0B14EC1AB9D57516FB728361CE1</data></token>',
             connectorType: connectorId,
             connectorVersion: 1,
             dataXml: xml_build

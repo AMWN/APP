@@ -35,7 +35,8 @@
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 	<!--Application CSS Files-->
-	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+	{% for cssFile in cssFiles %}
+	<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
@@ -44,22 +45,27 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
-		</section>
-	</section>
+	<!--<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>-->
+	<div id="wrapper" ng-class="{toggled : istoggled }" data-ng-controller="HeaderController">
+		 
+		 <div data-ng-include="'/modules/core/views/sidebar.client.view.html'"></div>
+		 <!-- Page Content -->
+        <section id="page-content-wrapper" class="content">
+            <section class="container-fluid">
+                {% block content %}{% endblock %}
+            </section>
+        </section>
+        <!-- /#page-content-wrapper -->
 
+	</div>
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
-		var user = {{ user | json | safe }};
+		var user = {{	user | json | safe	}};
 	</script>
 
 	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
-
-	{% if process.env.NODE_ENV === 'development' %}
+	{% for jsFile in jsFiles %}
+	<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} {% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
 	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
 	{% endif %}
